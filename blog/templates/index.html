@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    {% load static %}
+    <img src="{% static 'IMAGE/hDGMiMcc_0scF_fzPnQPaVxwa9et2C3W4kFNSKmHpH8.jpg' %}">
+
+    <!-- <h1>This Is My Post List</h1>
+    {% for post in posts %}
+    <ul>
+        <h1>{{ post.title }}</h1>
+        <h1>{{ post.slug }}</h1>
+        <h1>{{ post.author }}</h1>
+        <h1>{{ post.body }}</h1>
+        <h1>{{ post.pulish }}</h1>
+    </ul>
+    {% endfor %} -->
+    
+    <h1>This Is My Post List</h1>
+    {% for post in posts %}
+    <h1>
+        <a href="{{ post.get_absolute_url }}">
+            {{ post.title }}
+        </a>
+    </h1>
+    {% if post.post_image %}
+    <img src="{{ post.post_image.url }}" alt="">
+    {% endif %}
+    <p class="date">
+        Published {{ post.publish }} by {{ post.author }}
+    </p>
+    {{ post.body|truncatewords:30|linebreaks }}
+    {% endfor %}
+{% include "pagination.html" with page=posts %}
+
+{% endblock content %}
+
