@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<section class="vh-100">
+    <div class="container" h-100>
+        <div class="row">
+            <div class="col-6">
+                {% if form.errors %}
+                <p>there was an error</p>
+                {% endif %}
+
+                <form action="{% url 'accounts:signup' %}" method="post">
+
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type="submit" value="Submit">
+                </form>
+
+                <div class="col-6">
+                    <h1>Place image here</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

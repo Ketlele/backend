@@ -1,8 +1,8 @@
 from unicodedata import name
 from django.urls import path
 from .views import Myview, post_list, post_detail
-from .views import contact, displayTime
-from .views import book_list
+from .views import contact
+from .views import book_list,loginView,profileView,logout_view
 
 app_name="blog"
 
@@ -14,6 +14,8 @@ urlpatterns = [
     path("contact/", contact),
     path("about/",Myview.as_view(), name = "home"),
     path("<int:year>/<int:month>/<int:day>/<slug:post>/", post_detail, name="post_detail"),
-
+    path("login/",loginView, name= "login"),
+    path("profile/", profileView, name="profile"),
+    path("logout/", logout_view, name='logout')
 ]
 

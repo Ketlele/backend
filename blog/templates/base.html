@@ -17,22 +17,43 @@
             <h1>Deluxe Amps</h1>
         </div>
         <ul class="nav-links">
-            <li><a href="">Home</a></li>
-            <li><a href="./pages/about.html">About Us</a></li>
-            <li><a href="./pages/contact.html">Contact</a></li>
-            <li><a href="./pages/blog.html">Blog</a></li>
+            <li><a href="../templates/base.html">Home</a></li>
+            <li><a href="./about.html">About Us</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./book_list.html">Booklist</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'blog:logout' %}">logout</a></li>
+            {% else %}
+            <li>
+                <a href="{% url 'blog:login' %}">login</a>
+            </li>
+            <li>
+                <a href="{% url 'accounts:signup' %}">signup</a>
+            </li>
+            {% endif %}
+            
+            {% if request.user.is_authenticated %}
+            <li>Hello {{request.user}}</li>
+            {% endif %}
         </ul>
-        <div class="social">
-         <li><a href=""><i class="fab fa-facebook-square"></i></a></li>
-         <li><a href=""><i class="fab fa-twitter"></i></a></li>
-         <li><a href=""><i class="fab fa-instagram"></i></a></li>
-     </div>
         <div class="burger">
             <div class="line1"></div>
             <div class="line2"></div>
             <div class="line3"></div>
         </div>
     </nav>
+    
+    
+    <div class="container mt-5">
+        {% if message %}
+            {% for message in messages %}
+            <div class="alert alert-danger mt-5" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    
     {% block content %}
 
     {% endblock content %}

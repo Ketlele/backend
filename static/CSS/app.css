@@ -5,7 +5,7 @@
     --text-color: black;
     --headline-color: black;
     --button-color: rgba(5, 0, 5, 0.801);
-    --accent-color:rgba(160, 127, 17, 0.788);
+    --accent-color:rgba(182, 143, 16, 0.945);
     --headline-font:'Lato', sans-serif;
     --body-font:'Raleway', sans-serif;
 }
@@ -48,8 +48,8 @@ nav{
     color: var(--text-color);
     text-decoration: none;
     letter-spacing: 3px;
-    font-weight: bold;
-    font-size: 1.3rem;
+    font-weight: initial;
+    font-size: 1rem;
     font-family: var(--headline-font);
 }
 
